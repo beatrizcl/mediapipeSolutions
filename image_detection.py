@@ -23,13 +23,12 @@ if webcam.isOpened():
         frameRGB = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         for (x, y, w, h) in faces:
             cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
-            cv2.putText(frame, 'trouxa', (x, y-10), cv2.FONT_HERSHEY_TRIPLEX, 0.7, (38, 255, 34))
+            cv2.putText(frame, '@beatrizcrstna', (x, y-10), cv2.FONT_HERSHEY_TRIPLEX, 0.7, (38, 255, 34))
         
         # desenhar a mão
         lista_maos = maos.process(frameRGB)
         if lista_maos.multi_hand_landmarks:
             for mao in lista_maos.multi_hand_landmarks:
-                print(mao.landmark)
                 desenho_mp.draw_landmarks(frame, mao, reconhecimento_maos.HAND_CONNECTIONS)
                 
         
